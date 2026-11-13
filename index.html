@@ -1,0 +1,627 @@
+<title>Nicolò Dinice</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<style>
+/* Layout: a dark gallery wall. Home is a quiet index; each project is a vertical
+   journey where the work supplies all the colour. Routing on the hash. */
+:root{
+  --ink:#0d100e;          /* near-black, green bias */
+  --ink-2:#141816;        /* raised surface */
+  --board:#e8e3da;        /* drawing-board paper */
+  --board-ink:#1b1f1d;
+  --bone:#ece7df;         /* primary text */
+  --mute:#8c9189;         /* secondary text */
+  --terra:#c4603c;        /* residential accent */
+  --verde:#6d8a66;        /* greenhouse accent */
+  --line:rgba(236,231,223,.14);
+  --f-display:"Instrument Serif",Georgia,"Times New Roman",serif;
+  --f-body:"Inter Tight",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --gut:max(16px,env(safe-area-inset-left,0px));
+  --gut-r:max(16px,env(safe-area-inset-right,0px));
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
+}
+body{
+  margin:0;background:var(--ink);color:var(--bone);
+  font-family:var(--f-body);font-size:16px;line-height:1.65;font-weight:300;
+  -webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:2px solid var(--terra);outline-offset:3px}
+
+.wrap{max-width:74rem;margin:0 auto;padding-left:var(--gut);padding-right:var(--gut-r)}
+.narrow{max-width:40rem}
+
+h1,h2,h3{margin:0;font-family:var(--f-display);font-weight:400;line-height:1.04;letter-spacing:-.01em;text-wrap:balance}
+p{margin:0}
+.label{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mute);margin:0}
+
+/* ---------- top bar ---------- */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:40;background:rgba(13,16,14,.92)}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:rgba(13,16,14,.84);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar-in{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:54px}
+.sig{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;text-decoration:none}
+.sig span{color:var(--mute)}
+.nav{display:flex;gap:1.4rem}
+.nav a{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);text-decoration:none}
+.nav a:hover,.nav a[aria-current="page"]{color:var(--bone)}
+@media(max-width:760px){.nav{gap:1rem}.nav a{font-size:.62rem;letter-spacing:.1em}}
+@media(max-width:480px){.sig span{display:none}}
+
+/* ---------- home ---------- */
+.intro{padding-block:clamp(3rem,9vw,6.5rem) clamp(2rem,5vw,3rem)}
+.intro h1{font-size:clamp(2.6rem,8vw,5.6rem)}
+.intro h1 em{font-style:italic;color:var(--verde)}
+.intro .lede{max-width:34rem;margin-top:1.4rem;font-size:clamp(1.05rem,2.2vw,1.24rem);line-height:1.58}
+.intro .meta{display:flex;flex-wrap:wrap;gap:.5rem 1.4rem;margin-top:1.6rem}
+
+.work{padding-block:clamp(1rem,3vw,2rem) clamp(3rem,8vw,5rem)}
+.work-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.6rem;border-bottom:1px solid var(--line);padding-bottom:.8rem;margin-bottom:clamp(1.4rem,4vw,2.4rem)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(20rem,1fr));gap:clamp(1.4rem,3.5vw,2.6rem)}
+.card{display:block;text-decoration:none;min-width:0}
+.card .shot{overflow:hidden;background:var(--ink-2)}
+.card .shot img{width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform .5s cubic-bezier(.2,.7,.3,1)}
+.card:hover .shot img{transform:scale(1.03)}
+.card h3{font-size:clamp(1.4rem,3vw,1.9rem);margin-top:1rem}
+.card .sub{margin-top:.45rem;font-size:.95rem;color:var(--mute)}
+.card .tags{display:flex;flex-wrap:wrap;gap:.4rem .9rem;margin-top:.7rem}
+.card .tags span{font-family:var(--f-mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--terra)}
+.card.retail .tags span{color:var(--verde)}
+
+.about{border-top:1px solid var(--line);padding-block:clamp(3rem,7vw,5rem)}
+.about-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:clamp(1.4rem,3.5vw,3rem);margin-top:1.6rem}
+.about-grid > div{min-width:0}
+.about-grid h3{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);font-weight:400}
+.about-grid ul{list-style:none;margin:.7rem 0 0;padding:0}
+.about-grid li{padding:.35rem 0;border-bottom:1px solid var(--line);font-size:.95rem}
+.about p{font-size:1.02rem;max-width:34rem}
+
+/* ---------- project pages ---------- */
+.back{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--f-mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);text-decoration:none;padding-block:1.4rem 0}
+.back:hover{color:var(--bone)}
+
+.hero{position:relative;margin-top:1rem}
+.hero-img{width:100%;aspect-ratio:16/8.2;object-fit:cover}
+.hero-shade{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(13,16,14,.5) 0%,rgba(13,16,14,.1) 38%,rgba(13,16,14,.93) 100%)}
+.hero-copy{position:absolute;inset:auto 0 0 0;padding-block:0 clamp(1.4rem,4.5vw,3rem)}
+.hero-copy h1{font-size:clamp(2.3rem,7.5vw,5.4rem)}
+.hero-copy h1 em{font-style:italic;color:var(--verde)}
+.retail .hero-copy h1 em{color:var(--terra)}
+.hero-meta{display:flex;flex-wrap:wrap;gap:.5rem 1.4rem;margin-top:.9rem}
+@media(max-width:600px){.hero-img{aspect-ratio:4/5}}
+
+section{padding-block:clamp(2.8rem,7vw,5rem)}
+.sec-head{display:flex;flex-direction:column;gap:.7rem;margin-bottom:clamp(1.4rem,4vw,2.4rem)}
+.sec-head h2{font-size:clamp(1.8rem,4.4vw,3rem)}
+.lede{font-size:clamp(1.02rem,2.2vw,1.18rem);line-height:1.6}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));gap:clamp(1.3rem,3.5vw,3rem);max-width:52rem}
+.cols p{min-width:0}
+.cols p+p{margin-top:.9rem}
+
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:1px;background:var(--line);border-block:1px solid var(--line);margin-top:clamp(1.6rem,4vw,2.4rem)}
+.facts div{background:var(--ink);padding:1.2rem 1.1rem}
+.facts .who{font-family:var(--f-display);font-size:1.35rem;line-height:1.1}
+.facts .role{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-top:.45rem}
+.facts .want{margin-top:.75rem;font-size:.94rem}
+
+.band{margin-top:clamp(1.5rem,4vw,2.4rem)}
+.band img{width:100%}
+.cap{display:flex;gap:.8rem;align-items:baseline;margin-top:.7rem;padding-left:var(--gut);padding-right:var(--gut-r)}
+.cap .n{font-family:var(--f-mono);font-size:.68rem;color:var(--terra);letter-spacing:.1em;flex:none}
+.cap .t{font-size:.88rem;color:var(--mute);min-width:0}
+.duo{display:grid;grid-template-columns:repeat(auto-fit,minmax(18rem,1fr));gap:clamp(.8rem,2vw,1.4rem)}
+.trio{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:clamp(.8rem,2vw,1.4rem)}
+.duo figure,.trio figure{margin:0;min-width:0}
+.duo figcaption,.trio figcaption{margin-top:.6rem;font-family:var(--f-mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+
+.board{background:var(--board);color:var(--board-ink)}
+.board .label{color:#5c625c}
+.board h2{color:var(--board-ink)}
+.board .lede{color:#2c322e}
+.board-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:clamp(1rem,2.5vw,1.8rem);margin-top:clamp(1.5rem,4vw,2.2rem)}
+.plate{margin:0;min-width:0}
+.plate img{width:100%;background:#fff;border:1px solid rgba(27,31,29,.14)}
+.plate figcaption{margin-top:.6rem;display:flex;gap:.6rem;align-items:baseline}
+.plate .k{font-family:var(--f-mono);font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:#6d7570;flex:none}
+.plate .v{font-size:.88rem;color:#2c322e;min-width:0}
+
+.room{border-top:1px solid var(--line);padding-top:clamp(1.5rem,4vw,2.2rem);margin-top:clamp(1.8rem,5vw,3.2rem)}
+.room-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:.6rem 1.2rem;margin-bottom:1.1rem}
+.room-head h3{font-size:clamp(1.25rem,3vw,1.85rem)}
+.room-head .note{font-size:.92rem;color:var(--mute);min-width:0;flex:1 1 18rem}
+
+.feature{background:var(--ink-2);border:1px solid var(--line);padding:clamp(1.2rem,3vw,2rem);margin-top:clamp(1.8rem,4vw,2.6rem)}
+.feature .pair{display:grid;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));gap:clamp(.8rem,2vw,1.4rem);margin-top:1.2rem}
+.feature figure{margin:0;min-width:0}
+.feature figcaption{margin-top:.6rem;font-family:var(--f-mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--verde)}
+.retail .feature figcaption{color:var(--terra)}
+
+.spec{display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:clamp(1.5rem,4vw,2.2rem)}
+.spec div{background:var(--ink);padding:1.05rem 1.1rem 1.15rem}
+.spec dt{font-family:var(--f-mono);font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
+.spec dd{margin:.4rem 0 0;font-size:1rem}
+
+.next{border-top:1px solid var(--line);padding-block:clamp(2.4rem,6vw,4rem)}
+.next a{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.6rem;text-decoration:none}
+.next h3{font-size:clamp(1.6rem,4vw,2.6rem)}
+
+/* ---------- contact ---------- */
+.contact{border-top:1px solid var(--line)}
+.contact h2{font-size:clamp(2rem,5.5vw,3.2rem)}
+.c-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:1.4rem;margin-top:1.8rem}
+.c-list .k{font-family:var(--f-mono);font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
+.c-list .v{margin-top:.3rem;font-size:1.02rem;word-break:break-word}
+.demo-note{border:1px dashed var(--line);padding:1.1rem 1.2rem;margin-top:clamp(1.8rem,5vw,2.8rem);font-size:.9rem;color:var(--mute)}
+.demo-note strong{color:var(--bone);font-weight:500}
+
+footer{border-top:1px solid var(--line);padding-block:1.6rem 2.4rem}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem;font-family:var(--f-mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+</style>
+
+<div class="bar">
+  <div class="wrap bar-in">
+    <a class="sig" href="#home">Nicolò Dinice <span>· Interior &amp; Retail Design</span></a>
+    <nav class="nav">
+      <a href="#home" data-nav="home">Progetti</a>
+      <a href="#viaggiare" data-nav="viaggiare">Residenziale</a>
+      <a href="#after-hours" data-nav="after-hours">Retail</a>
+      <a href="#contatti" data-nav="contatti">Contatti</a>
+    </nav>
+  </div>
+</div>
+
+<!-- ============================ HOME ============================ -->
+<main id="view-home">
+  <div class="wrap intro">
+    <p class="label">Milano · Disponibile</p>
+    <h1>Progetto spazi<br>che si <em>attraversano</em></h1>
+    <p class="lede">Interior &amp; Retail Designer, formato tra NAD e Accademia del Lusso, con una base tecnica da perito industriale. Lavoro dalla pianta al rendering, e mi interessa soprattutto il punto in cui un progetto incontra chi lo userà.</p>
+    <div class="meta">
+      <p class="label">AutoCAD</p>
+      <p class="label">SketchUp</p>
+      <p class="label">Enscape</p>
+      <p class="label">Photoshop</p>
+    </div>
+  </div>
+
+  <div class="wrap work">
+    <div class="work-head">
+      <p class="label">Progetti selezionati</p>
+      <p class="label">2026</p>
+    </div>
+    <div class="grid">
+      <a class="card" href="#viaggiare">
+        <div class="shot"><img loading="lazy" decoding="async" src="hero-serra.jpg" alt="Living con parete vegetale e vetrate sulla città" decoding="async"></div>
+        <h3>Viaggiare con la mente</h3>
+        <p class="sub">Appartamento privato con serra interna, Milano. Dal rilievo dello stato di fatto fino ai render finali.</p>
+        <div class="tags"><span>Residenziale</span><span>Accademia del Lusso</span></div>
+      </a>
+      <a class="card retail" href="#after-hours">
+        <div class="shot"><img loading="lazy" decoding="async" src="alzato-luna-rossa.jpg" alt="Alzato del pop up store con luna fuoriscala sullo skyline"></div>
+        <h3>After Hours til Dawn</h3>
+        <p class="sub">Pop up store in Stazione Centrale per il tour di The Weeknd. Zoning, flussi e allestimento di uno spazio effimero.</p>
+        <div class="tags"><span>Retail</span><span>Accademia del Lusso</span></div>
+      </a>
+    </div>
+  </div>
+
+  <div class="wrap about">
+    <p class="label">Chi sono</p>
+    <p style="margin-top:1rem">Vengo dal disegno tecnico: prima del design ho lavorato come disegnatore meccanico su AutoCAD e Inventor, sviluppando progetti su commessa a partire dalle specifiche del cliente. Da lì arriva l'attenzione alle misure e ai vincoli reali. Il retail l'ho visto anche dall'altro lato del bancone, come sales assistant in punto vendita.</p>
+    <div class="about-grid">
+      <div>
+        <h3>Formazione</h3>
+        <ul>
+          <li>Professional Course Interior Design — Accademia del Lusso</li>
+          <li>Specialization Retail Design — Accademia del Lusso</li>
+          <li>Master Interior Design — NAD, Nuova Accademia del Design</li>
+          <li>Perito Industriale, Elettrotecnica — ITIS G. Marconi</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Competenze</h3>
+        <ul>
+          <li>Progettazione 2D/3D e rendering</li>
+          <li>Lighting design e materiali</li>
+          <li>Retail design e visual merchandising</li>
+          <li>Disegno tecnico e tavole esecutive</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Certificazioni</h3>
+        <ul>
+          <li>Autodesk Certified User: AutoCAD</li>
+          <li>Corso AutoCAD 2D-3D — Musa Formazione</li>
+          <li>Cambridge English B1</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- ==================== PROGETTO 1 — RESIDENZIALE ==================== -->
+<main id="view-viaggiare" hidden>
+  <div class="wrap"><a class="back" href="#home">← Tutti i progetti</a></div>
+
+  <header class="hero">
+    <img class="hero-img" fetchpriority="high" src="hero-serra.jpg" alt="Living con parete vegetale e grandi vetrate sulla città">
+    <div class="hero-shade"></div>
+    <div class="hero-copy">
+      <div class="wrap">
+        <p class="label">Progetto residenziale · Milano</p>
+        <h1>Viaggiare<br>con la <em>mente</em></h1>
+        <div class="hero-meta">
+          <p class="label">Accademia del Lusso Milano</p>
+          <p class="label">2026</p>
+          <p class="label">AutoCAD · SketchUp · Enscape</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head narrow">
+        <p class="label">01 — Il brief</p>
+        <h2>Un'oasi dentro la città</h2>
+      </div>
+      <p class="lede narrow">Chris e Joyce vivono in una grande città e chiedono una casa in cui potersi staccare dalla realtà di tutti i giorni: una serra interna per respirare aria più pulita, una zona bar da condividere con gli amici, una cucina ampia e una stanza che cambia funzione a seconda di chi arriva.</p>
+      <div class="facts">
+        <div><p class="who">Chris</p><p class="role">33 anni · Ingegnere</p><p class="want">Una zona bar per gli amici e spazi che funzionino senza doverci pensare.</p></div>
+        <div><p class="who">Joyce</p><p class="role">31 anni · Chef</p><p class="want">Verde dentro casa e una cucina ampia, davvero da lavorarci.</p></div>
+        <div><p class="who">La stanza doppia</p><p class="role">Richiesta vincolante</p><p class="want">Biblioteca tutti i giorni, camera per gli ospiti all'occorrenza.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head narrow">
+        <p class="label">02 — Concept</p>
+        <h2>Dove natura e città si parlano</h2>
+      </div>
+      <div class="cols">
+        <p>L'obiettivo è un luogo in cui natura e città riescano a convivere e soprattutto a dialogare: un ambiente che trova l'armonia tra il ritmo della vita urbana e la calma, la matericità, il tempo lento della vegetazione.</p>
+        <p>La casa è costruita come un viaggio esperienziale. Un percorso che attraversa atmosfere che cambiano gradualmente — dall'ingresso scuro e minerale fino alla luce della serra — e accompagna chi la vive in una scoperta sensoriale dello spazio.</p>
+      </div>
+    </div>
+    <div class="band">
+      <img loading="lazy" decoding="async" src="concept.jpg" alt="Tavola di concept: la città e la vegetazione accostate">
+      <p class="cap"><span class="n">↳</span><span class="t">Il contrasto di partenza: lo skyline e il fogliame, le due materie del progetto.</span></p>
+    </div>
+    <div class="wrap band">
+      <div class="duo">
+        <figure><img loading="lazy" decoding="async" src="mood-concettuale.jpg" alt="Moodboard concettuale"><figcaption>Moodboard concettuale</figcaption></figure>
+        <figure><img loading="lazy" decoding="async" src="mood-arredi.jpg" alt="Moodboard arredi"><figcaption>Moodboard arredi</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="board">
+    <div class="wrap">
+      <div class="sec-head narrow">
+        <p class="label">03 — Dal rilievo al progetto</p>
+        <h2>Le tavole</h2>
+        <p class="lede">Stato di fatto, demolizioni e nuove partizioni, finiture, distribuzione degli arredi e studio dell'illuminazione: il progetto è stato seguito su tutto il ciclo, non solo sulle immagini finali.</p>
+      </div>
+      <div class="board-grid">
+        <figure class="plate"><img loading="lazy" decoding="async" src="stato-di-fatto.jpg" alt="Pianta dello stato di fatto"><figcaption><span class="k">01</span><span class="v">Stato di fatto</span></figcaption></figure>
+        <figure class="plate"><img loading="lazy" decoding="async" src="tavolati.jpg" alt="Pianta dei tavolati di progetto"><figcaption><span class="k">02</span><span class="v">Tavolati di progetto</span></figcaption></figure>
+        <figure class="plate"><img loading="lazy" decoding="async" src="pavimentazione.jpg" alt="Pianta delle pavimentazioni"><figcaption><span class="k">03</span><span class="v">Pavimentazioni — Listone Giordano, iroko, Carrara verdino</span></figcaption></figure>
+        <figure class="plate"><img loading="lazy" decoding="async" src="arredo.jpg" alt="Pianta arredata"><figcaption><span class="k">04</span><span class="v">Distribuzione e arredo</span></figcaption></figure>
+        <figure class="plate"><img loading="lazy" decoding="async" src="illuminazione.jpg" alt="Pianta dell'illuminazione"><figcaption><span class="k">05</span><span class="v">Illuminazione — punti luce e linee led incassate</span></figcaption></figure>
+        <figure class="plate"><img loading="lazy" decoding="async" src="materiali.jpg" alt="Abaco dei materiali"><figcaption><span class="k">06</span><span class="v">Abaco materiali — marmi, ottone spazzolato, rovere scuro, lana</span></figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head narrow">
+        <p class="label">04 — Gli ambienti</p>
+        <h2>Il percorso, stanza per stanza</h2>
+      </div>
+      <div class="room">
+        <div class="room-head">
+          <h3>Ingresso</h3>
+          <p class="note">Tessitura terracotta, specchio organico e seduta sospesa: la prima atmosfera del percorso, ancora minerale.</p>
+        </div>
+      </div>
+    </div>
+    <div class="band"><img loading="lazy" decoding="async" src="ingresso-1.jpg" alt="Render dell'ingresso con specchio e seduta in pelle"></div>
+    <div class="wrap band"><img loading="lazy" decoding="async" src="ingresso-2.jpg" alt="Render dell'ingresso verso il living"></div>
+
+    <div class="wrap">
+      <div class="room">
+        <div class="room-head">
+          <h3>Living e zona bar</h3>
+          <p class="note">Boiserie a doghe policrome, murale d'autore e un bancone bar affacciato sulla vegetazione.</p>
+        </div>
+      </div>
+    </div>
+    <div class="band"><img loading="lazy" decoding="async" src="living-2.jpg" alt="Render del living con murale e boiserie a doghe"></div>
+    <div class="wrap band">
+      <div class="duo">
+        <figure><img loading="lazy" decoding="async" src="living-1.jpg" alt="Render del living con vista sulla città"><figcaption>Living — giorno</figcaption></figure>
+        <figure><img loading="lazy" decoding="async" src="living-3.jpg" alt="Render del living in notturna"><figcaption>Living — sera</figcaption></figure>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <div class="room">
+        <div class="room-head">
+          <h3>La serra</h3>
+          <p class="note">Il cuore della richiesta: una porzione di casa data alla vegetazione, con seduta curva e illuminazione radente che la tiene viva anche di sera.</p>
+        </div>
+      </div>
+    </div>
+    <div class="band"><img loading="lazy" decoding="async" src="serra-1.jpg" alt="Render della serra interna con seduta curva"></div>
+    <div class="wrap band">
+      <img loading="lazy" decoding="async" src="serra-2.jpg" alt="Render della serra in notturna">
+      <p class="cap"><span class="n">↳</span><span class="t">Di sera la serra diventa la sorgente di luce del living.</span></p>
+    </div>
+
+    <div class="wrap">
+      <div class="room">
+        <div class="room-head">
+          <h3>Cucina</h3>
+          <p class="note">Ampia e realmente operativa, come chiesto da Joyce: isola centrale, piani in marmo e tavolo integrato.</p>
+        </div>
+        <div class="duo">
+          <figure><img loading="lazy" decoding="async" src="cucina-1.jpg" alt="Render della cucina con isola e tavolo"><figcaption>Cucina — zona pranzo</figcaption></figure>
+          <figure><img loading="lazy" decoding="async" src="cucina-2.jpg" alt="Render della cucina verso il living"><figcaption>Cucina — verso il living</figcaption></figure>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <div class="feature">
+        <p class="label">La stanza che cambia funzione</p>
+        <h3 style="font-size:clamp(1.25rem,3vw,1.85rem);margin-top:.6rem">Biblioteca, poi camera per gli ospiti</h3>
+        <p class="note" style="margin-top:.8rem;color:var(--mute);max-width:44rem">La richiesta più vincolante del brief risolta con un unico elemento: il divano a filo libreria diventa letto senza rubare passaggio, e la stanza passa da studio a camera in un gesto.</p>
+        <div class="pair">
+          <figure><img loading="lazy" decoding="async" src="libreria.jpg" alt="Stanza in configurazione biblioteca"><figcaption>Configurazione biblioteca</figcaption></figure>
+          <figure><img loading="lazy" decoding="async" src="ospiti.jpg" alt="Stanza in configurazione camera per ospiti"><figcaption>Configurazione ospiti</figcaption></figure>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <div class="room">
+        <div class="room-head">
+          <h3>Camera patronale e bagni</h3>
+          <p class="note">Testata a doghe curve, cabina armadio filtrante e bagni in contrasto: verde smeraldo per il servizio, marmo chiaro per il padronale.</p>
+        </div>
+      </div>
+    </div>
+    <div class="band"><img loading="lazy" decoding="async" src="camera-1.jpg" alt="Render della camera patronale"></div>
+    <div class="wrap band">
+      <div class="duo">
+        <figure><img loading="lazy" decoding="async" src="camera-2.jpg" alt="Render della cabina armadio"><figcaption>Cabina armadio</figcaption></figure>
+        <figure><img loading="lazy" decoding="async" src="bagno-servizio.jpg" alt="Render del bagno di servizio"><figcaption>Bagno di servizio</figcaption></figure>
+      </div>
+    </div>
+    <div class="wrap band">
+      <img loading="lazy" decoding="async" src="bagno.jpg" alt="Render del bagno padronale">
+      <p class="cap"><span class="n">↳</span><span class="t">Bagno padronale — marmo chiaro, specchio retroilluminato, doccia a filo.</span></p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head narrow"><p class="label">05 — Scheda</p><h2>Dati di progetto</h2></div>
+      <dl class="spec">
+        <div><dt>Tipologia</dt><dd>Appartamento privato</dd></div>
+        <div><dt>Luogo</dt><dd>Milano</dd></div>
+        <div><dt>Anno</dt><dd>2026</dd></div>
+        <div><dt>Ambito</dt><dd>Accademia del Lusso Milano</dd></div>
+        <div><dt>Ambienti</dt><dd>Ingresso, living, zona bar, serra, cucina, stanza ospiti, camera patronale, due bagni</dd></div>
+        <div><dt>Software</dt><dd>AutoCAD · SketchUp · Enscape · Photoshop</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <div class="wrap next">
+    <a href="#after-hours">
+      <div>
+        <p class="label">Progetto successivo</p>
+        <h3 style="margin-top:.5rem">After Hours til Dawn</h3>
+      </div>
+      <p class="label">Retail →</p>
+    </a>
+  </div>
+</main>
+
+<!-- ==================== PROGETTO 2 — RETAIL ==================== -->
+<main id="view-after-hours" class="retail" hidden>
+  <div class="wrap"><a class="back" href="#home">← Tutti i progetti</a></div>
+
+  <header class="hero">
+    <img class="hero-img" fetchpriority="high" src="alzato-luna-rossa.jpg" alt="Alzato interno del pop up store con luna fuoriscala sullo skyline">
+    <div class="hero-shade"></div>
+    <div class="hero-copy">
+      <div class="wrap">
+        <p class="label">Pop up store · Milano Centrale</p>
+        <h1>After Hours<br>til <em>Dawn</em></h1>
+        <div class="hero-meta">
+          <p class="label">Accademia del Lusso Milano</p>
+          <p class="label">2026</p>
+          <p class="label">Retail design</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head narrow">
+        <p class="label">01 — Il tema</p>
+        <h2>Il negozio come palcoscenico</h2>
+      </div>
+      <div class="cols">
+        <p>Il tour di The Weeknd arriva a Milano per tre date, il 24, 25 e 26 luglio. Il progetto è uno store temporaneo che apre per tutto il mese: prepara i fan al concerto e li accoglie anche nei giorni successivi, quando il tour è già ripartito.</p>
+        <p>Il punto di partenza è che non basta vendere il merch. Un pop up store vive un mese e poi sparisce: deve lasciare addosso un'esperienza, non solo una busta. Da qui la scelta di trattare il negozio come un palco, con una scenografia riconoscibile da chi quel tour l'ha visto.</p>
+      </div>
+      <dl class="spec">
+        <div><dt>Format</dt><dd>Pop up store, apertura di un mese</dd></div>
+        <div><dt>Location</dt><dd>Stazione di Milano Centrale</dd></div>
+        <div><dt>Periodo</dt><dd>Luglio 2026, attorno alle tre date milanesi</dd></div>
+        <div><dt>Offerta</dt><dd>Merch, vinili e dischi, zona esperienza</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="board">
+    <div class="wrap">
+      <div class="sec-head narrow">
+        <p class="label">02 — Dentro al progetto</p>
+        <h2>Zoning e flussi</h2>
+        <p class="lede">Lo spazio è stato costruito a partire da come ci si muove dentro: prima le zone, poi i tre percorsi che un visitatore può fare, dall'ingresso alla cassa.</p>
+      </div>
+      <div class="board-grid">
+        <figure class="plate"><img loading="lazy" decoding="async" src="pianta-vuota.jpg" alt="Pianta dello spazio di partenza"><figcaption><span class="k">01</span><span class="v">Lo spazio di partenza</span></figcaption></figure>
+        <figure class="plate"><img loading="lazy" decoding="async" src="zoning.jpg" alt="Tavola di zoning con tutte le zone"><figcaption><span class="k">02</span><span class="v">Zoning — vetrine, atterraggio, cassa, dj, abbigliamento, dischi</span></figcaption></figure>
+        <figure class="plate"><img loading="lazy" decoding="async" src="materiali-store.jpg" alt="Abaco dei materiali del pop up store"><figcaption><span class="k">03</span><span class="v">Materiali — bilaminato, alluminio anodizzato, LVT da 5 mm</span></figcaption></figure>
+      </div>
+
+      <div class="board-grid" style="margin-top:clamp(1rem,2.5vw,1.8rem)">
+        <figure class="plate"><img loading="lazy" decoding="async" src="flusso-completo.jpg" alt="Diagramma del percorso completo"><figcaption><span class="k">04</span><span class="v">Percorso completo</span></figcaption></figure>
+        <figure class="plate"><img loading="lazy" decoding="async" src="flusso-esperienza.jpg" alt="Diagramma del percorso esperienza"><figcaption><span class="k">05</span><span class="v">Percorso esperienza</span></figcaption></figure>
+        <figure class="plate"><img loading="lazy" decoding="async" src="flusso-cassa.jpg" alt="Diagramma del percorso verso la cassa"><figcaption><span class="k">06</span><span class="v">Percorso informazioni e cassa</span></figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="feature">
+        <p class="label">L'elemento centrale</p>
+        <h3 style="font-size:clamp(1.25rem,3vw,1.85rem);margin-top:.6rem">Una luna fuoriscala, che si muove</h3>
+        <p class="note" style="margin-top:.8rem;color:var(--mute);max-width:44rem">Al centro dello store la scenografia del tour diventa arredo: una luna fuoriscala che sale e scende lentamente, con luci che ne cambiano la colorazione. Il pavimento la raddoppia con un cerchio di led, e le strisce luminose a terra ricostruiscono la struttura del palco.</p>
+        <div class="pair">
+          <figure><img loading="lazy" decoding="async" src="texture-luna-rossa.jpg" alt="Pianta texturizzata con la luna in colorazione rossa"><figcaption>Pianta texturizzata — luna rossa</figcaption></figure>
+          <figure><img loading="lazy" decoding="async" src="texture-luna.jpg" alt="Pianta texturizzata con la luna in colorazione naturale"><figcaption>Pianta texturizzata — luna naturale</figcaption></figure>
+        </div>
+      </div>
+    </div>
+    <div class="wrap band">
+      <div class="duo">
+        <figure><img loading="lazy" decoding="async" src="alzato-luna-rossa.jpg" alt="Alzato interno con luna rossa"><figcaption>Alzato — luna rossa</figcaption></figure>
+        <figure><img loading="lazy" decoding="async" src="alzato-luna.jpg" alt="Alzato interno con luna naturale"><figcaption>Alzato — luna naturale</figcaption></figure>
+      </div>
+      <p class="cap"><span class="n">↳</span><span class="t">La stessa parete con le due colorazioni: lo store cambia atmosfera nell'arco della giornata.</span></p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="room">
+        <div class="room-head">
+          <h3>L'allestimento</h3>
+          <p class="note">La parete di fondo riprende lo skyline della scenografia del tour. Al centro una vetrina con tre manichini; ai lati cappelli e scarpe disposti in una composizione che richiama il marchio dell'artista.</p>
+        </div>
+      </div>
+    </div>
+    <div class="band"><img loading="lazy" decoding="async" src="alzato-vetrina.jpg" alt="Alzato della parete espositiva con manichini e skyline"></div>
+    <div class="wrap band">
+      <img loading="lazy" decoding="async" src="pianta-arredata.jpg" alt="Pianta arredata del pop up store">
+      <p class="cap"><span class="n">↳</span><span class="t">Pianta arredata: zona dj con cabinati, luna centrale, appendiabiti curvi e area dischi.</span></p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head narrow"><p class="label">03 — Scheda</p><h2>Dati di progetto</h2></div>
+      <dl class="spec">
+        <div><dt>Tipologia</dt><dd>Pop up store temporaneo</dd></div>
+        <div><dt>Luogo</dt><dd>Stazione di Milano Centrale</dd></div>
+        <div><dt>Durata</dt><dd>Un mese — luglio 2026</dd></div>
+        <div><dt>Ambito</dt><dd>Accademia del Lusso Milano — Specialization Retail Design</dd></div>
+        <div><dt>Temi</dt><dd>Zoning, flussi, concept di marca, layout espositivo, vetrine</dd></div>
+        <div><dt>Software</dt><dd>AutoCAD · SketchUp · Photoshop</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <div class="wrap next">
+    <a href="#viaggiare">
+      <div>
+        <p class="label">Progetto precedente</p>
+        <h3 style="margin-top:.5rem">Viaggiare con la mente</h3>
+      </div>
+      <p class="label">Residenziale →</p>
+    </a>
+  </div>
+</main>
+
+<!-- ============================ CONTATTI ============================ -->
+<section id="contatti" class="contact">
+  <div class="wrap">
+    <p class="label">Contatti</p>
+    <h2 style="margin-top:.7rem">Parliamo di un progetto</h2>
+    <p class="lede narrow" style="margin-top:1rem">Interior &amp; Retail Designer, disponibile su Milano e provincia.</p>
+    <div class="c-list">
+      <div><p class="k">Email</p><p class="v">nicolodinice2000@gmail.com</p></div>
+      <div><p class="k">Telefono</p><p class="v">+39 331 739 7788</p></div>
+      <div><p class="k">LinkedIn</p><p class="v">Nicolò Dinice</p></div>
+      <div><p class="k">Base</p><p class="v">Gorgonzola (MI), Italia</p></div>
+    </div>
+    <div class="demo-note">
+      <strong>Demo.</strong> Sito di esempio costruito sui due progetti inviati. Nel sito finale si aggiungono il terzo progetto, il CV scaricabile dai contatti e il link al profilo LinkedIn.
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <span>Nicolò Dinice — Interior &amp; Retail Design</span>
+    <span>Milano · 2026</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var views = {
+    home: document.getElementById('view-home'),
+    viaggiare: document.getElementById('view-viaggiare'),
+    'after-hours': document.getElementById('view-after-hours')
+  };
+  var navs = document.querySelectorAll('[data-nav]');
+
+  function show(name){
+    if(!views[name]) name = 'home';
+    Object.keys(views).forEach(function(k){ views[k].hidden = (k !== name); });
+    navs.forEach(function(a){
+      if(a.getAttribute('data-nav') === name) a.setAttribute('aria-current','page');
+      else a.removeAttribute('aria-current');
+    });
+    document.title = name === 'viaggiare' ? 'Viaggiare con la mente — Nicolò Dinice'
+                   : name === 'after-hours' ? 'After Hours til Dawn — Nicolò Dinice'
+                   : 'Nicolò Dinice';
+  }
+
+  function route(scroll){
+    var h = (location.hash || '').replace('#','');
+    if(h === 'contatti'){
+      var el = document.getElementById('contatti');
+      if(el && scroll) el.scrollIntoView({behavior:'smooth'});
+      return;
+    }
+    show(h);
+    if(scroll) window.scrollTo({top:0, behavior:'auto'});
+  }
+
+  window.addEventListener('hashchange', function(){ route(true); });
+  route(false);
+})();
+</script>
